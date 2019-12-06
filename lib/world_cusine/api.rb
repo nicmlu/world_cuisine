@@ -1,6 +1,13 @@
 class World_Cusine::API
   ROOT_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?'
 
+  def self.all_areas(strarea)
+    @@area = strarea
+
+    area_response = HTTParty.get(ROOT_URL + "a=list")
+
+  end
+
   def self.get_area(strarea)
     @@area = strarea
 
