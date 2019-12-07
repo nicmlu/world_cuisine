@@ -30,7 +30,7 @@ class World_Cusine::CLI
     end    
     
     def area_meals
-        puts "To see a list of meals from an area, type in the number of that area or type in exit to end the search."
+        puts "To see a list of meals from an area, type in the number of that area or type in exit to end the search..."
         input = gets.chomp.downcase  
         if input === "exit"
         goodbye
@@ -45,35 +45,44 @@ class World_Cusine::CLI
 
         meals.each.with_index {|meal_hash, index| puts "#{index + 1}. #{Meal.strMeal}"}
         else 
-            puts "Sorry that is not a valid option, please try a different number"
+            puts "Sorry, but that is not a valid option. Please type in a different area number..."
             list_meals
         end
 
     end 
 
-    # def meal_info 
-    #     puts "Here is the meal you selected:"
-    #     puts "=============================================================="
-        
-    #     input = gets.chomp 
-    #     if input === "exit"
-    #     goodbye
-    #     elsif
-    
-    #     selected_meal = World_Cusine::Meal.get_meal_info(meal_id)
+    def meal_info 
 
-    #     puts "Meal Name: #{Meal.strMeal}"
-    #     puts "Meal Category: #{Meal.strCategory}"
-    #     puts "Meal Area: #{Meal.strArea}"
-    #     puts "Meal Instructions: #{Meal.strInstructions}"
+        puts "To see more information about a meal, type in the number of that meal or type in exit to end the search..."
+        
+        
+        input = gets.chomp 
+        if input === "exit"
+        goodbye
+        elsif
+    
+        selected_meal = World_Cusine::Meal.meal_details(meal_id)
 
-    #     else 
-    #         puts "Sorry that is not a valid option, please try a different number"
-    #         list_meals
-    #     end
+        puts "Here is the meal you selected:"
+        puts "=============================================================="
+
+        puts "Meal Name: #{Meal.strMeal}"
+        puts "Meal Category: #{Meal.strCategory}"
+        puts "Meal Area: #{Meal.strArea}"
+
+        puts "=============================================================="
+        puts "Meal Ingredients:"
+        puts 
+
+        puts "Meal Instructions: #{Meal.strInstructions}"
+
+        else 
+            puts "Sorry that is not a valid option, please try a different number"
+            list_meals
+        end
         
     
-    # end 
+    end 
 
     # def another_search
     #     puts "Would you like to search for another cocktail? Enter Y or N"
