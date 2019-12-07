@@ -33,8 +33,9 @@ class World_Cusine::CLI
         name = gets.strip.capitalize
         puts ""
         puts "#{name}, with World Cusine you can find tasty meals from all over the world!"
-        sleep 2
+        sleep 4
         puts "Here is the list of cusine areas you can explore:"
+        sleep 4
         list_areas
     end
 
@@ -45,6 +46,7 @@ class World_Cusine::CLI
     
     def area_meals
         puts ""
+        puts "========================================================================================================="
         puts "To see a list of meals from an area, type in the number of that area or type in exit to end the search..."
         puts ""
         input = gets.chomp.downcase  
@@ -54,9 +56,11 @@ class World_Cusine::CLI
             puts "What a great area to explore! Let's see what meals you can cook up..."
             sleep 2
             area = World_Cusine::Area.all[input.to_i - 1]
+            
             puts "Here are the cusine options..."
             sleep 2 
-            World_Cusine::API.get_area_meals(area).each.with_index {|m, i| puts "#{i + 1}. #{m.strMeal}"}
+            World_Cusine::API.get_area_meals(area)
+            World_Cusine::Meal.all.each.with_index {|m, i| puts "#{i + 1}. #{m.strMeal}"}
         else 
             puts "Sorry, but that is not a valid option. Please type in a different area number..."
             area_meals
