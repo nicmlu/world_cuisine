@@ -5,6 +5,7 @@ class World_Cusine::CLI
     list_areas
     area_meals 
     meal_info
+    # recipe_box
     another_search
     goodbye
     end 
@@ -110,6 +111,27 @@ class World_Cusine::CLI
             list_meals
         end
     end 
+
+    # def recipe_box(meal)
+    #     puts "Would you like to save this meal to your recipe box?"
+    #     puts "Enter 'yes' or 'no'..."
+    #     puts "You can enter 'exit' to end the search..."
+    #     input = gets.chomp.downcase 
+    #     if input == "exit"
+    #         goodbye
+    #     end
+    #     puts ""
+    #     case input
+    #         when "yes"
+            
+    #         when "no"
+    #         another_search
+    #     else
+    #         puts "I don't understand that answer."
+    #         another_search
+    #     end
+
+    # end 
 
     def another_search
         puts "Enter 'yes' to search for another meal..."
