@@ -23,8 +23,8 @@ class World_Cusine::CLI
     puts "         ----                                              "
     puts "     ================================================   "
     greeting
-    list_cocktails 
-    more_info
+    list_areas 
+    meal_info
     another_search
     goodbye
     end 
@@ -55,13 +55,13 @@ class World_Cusine::CLI
         letter.match(/\W/) || letter.match(/[xu8]/)
     end 
 
-    def list 
+    def list_areas 
         World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{d.strArea}"}
-        more_info
+        list_meals
     end     
     
 
-    def more_info
+    def list_meals
         puts "=============================================================="
         puts "Enter the number of the area where you'd like to expand your palate or enter 'exit' to end the search:"
         puts ""
@@ -70,22 +70,23 @@ class World_Cusine::CLI
         goodbye
         elsif (1..World_Cusine::Area.all.size).include?(input.to_i)
     
-        meal = World_Cusine::Meal.all[input.to_i - 1]
-        Kocktailz::API.get_single_cocktail(cocktail)
+        area = World_Cusine::Area.all[input.to_i - 1]
+        meals = World_Cusine::API.get_area_meals(area)
 
-        puts "strDrink: #{cocktail.strDrink}"
-        puts "idDrink: #{cocktail.idDrink}"
-        puts "strCategory: #{cocktail.strCategory}"
-        puts "strIngredient1: #{cocktail.strIngredient1}"
-        puts "strIngredient2: #{cocktail.strIngredient2}"
-        puts "strIngredient3: #{cocktail.strIngredient3}"
-        puts "strInstructions: #{cocktail.strInstructions}"
-        puts "strGlass: #{cocktail.strGlass}"
-        puts "strAlcoholic: #{cocktail.strAlcoholic}"
+        puts "Here are the cusine options from #{area}"
+
+        meals.each.with_index do |meal_hash, index| puts "#{index + 1}. #{Meal.strMeal}"
+        
         else 
             puts "Sorry that is not a valid option, please try a different number"
-            more_info
+            list_meals
         end
+    end 
+
+    def meal_info 
+        puts "Here is the meal you selected:"
+        
+    
     end 
 
     def another_search
