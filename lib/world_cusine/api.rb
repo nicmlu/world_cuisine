@@ -14,6 +14,6 @@ class World_Cusine::API
   def self.get_meal_info(meal)
     if !meal.strMeal 
     meal_info_response = HTTParty.get(ROOT_URL + "i=#{meal}")
-    World_Cusine::Meal.update(meal_info_response)}
+    World_Cusine::Meal.update(meal_info_response)
   end 
 end
