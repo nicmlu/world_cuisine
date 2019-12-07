@@ -85,6 +85,24 @@ class World_Cusine::CLI
 
     def meal_info 
         puts "Here is the meal you selected:"
+        puts "=============================================================="
+        
+        input = gets.chomp 
+        if input === "exit"
+        goodbye
+        elsif
+    
+        selected_meal = World_Cusine::Meal.get_meal_info(meal_id)
+
+        puts "Meal Name: #{Meal.strMeal}"
+        puts "Meal Category: #{Meal.strCategory}"
+        puts "Meal Area: #{Meal.strArea}"
+        puts "Meal Instructions: #{Meal.strInstructions}"
+
+        else 
+            puts "Sorry that is not a valid option, please try a different number"
+            list_meals
+        end
         
     
     end 

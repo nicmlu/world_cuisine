@@ -2,14 +2,14 @@ class World_Cusine::API
   ROOT_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?'
 
   def self.all_areas
-    @@area = strarea
+    @area = strarea
 
     area_response = HTTParty.get(ROOT_URL + "a=list")
 
   end
 
   def self.get_area(strarea)
-    @@area = strarea
+    @area = strarea
 
     area_response = HTTParty.get(ROOT_URL + "a=#{strarea}")
     area_response["area"].each {|area_hash| World_Cusine::Area.new(area_hash)}
@@ -17,7 +17,7 @@ class World_Cusine::API
   end
 
   def self.get_area_meals(input)
-    @@meal_name = input
+    @meal_name = input
     
     meals_response = HTTParty.get(ROOT_URL + "a=#{input}")
     meals_response["meal"].each {|meal_hash| World_Cusine::Meal.new(meal_hash)
