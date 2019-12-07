@@ -1,4 +1,4 @@
-class WorldCusine::Area
+class World_Cusine::Area
 
     attr_accessor :strArea
 

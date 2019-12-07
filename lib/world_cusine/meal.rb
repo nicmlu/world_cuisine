@@ -18,11 +18,11 @@ class World_Cusine::Meal
     end
 
     def update(args)
-        args.each {|k,v|self.send("#{k}=", v) if self.respond_to?(k)}
+        args.each {|k,v|self.send(("#{k}="), v) if self.respond_to?(k)}
     end
 
     def meal_details(args)
-        args.each {|k,v|self.send("#{k}=", v) if self.respond_to?(k)}
+        args.each {|k,v|self.send(("#{k}="), v) if self.respond_to?(k)}
     end 
 
     def meal_ingredients
@@ -67,6 +67,6 @@ class World_Cusine::Meal
         if :strIngredient20 != nil || ""
             puts "#{:strIngredient20}: #{:strMeasure20}"
         end 
-    end 
-
+    end
+end
 end

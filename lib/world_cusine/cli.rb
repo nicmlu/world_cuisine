@@ -25,7 +25,7 @@ class World_Cusine::CLI
     # end 
 
     def list_areas 
-        WorldCusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{d.strArea}"}
+        World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{d.strArea}"}
         # list_meals
     end    
     
@@ -34,11 +34,11 @@ class World_Cusine::CLI
         input = gets.chomp.downcase  
         if input === "exit"
         goodbye
-        elsif (1..WorldCusine::Area.all.size).include?(input.to_i)
+        elsif (1..World_Cusine::Area.all.size).include?(input.to_i)
             puts "What a great area to explore! Let's see what meals you can cook up..."
             sleep 2
-            area = WorldCusine::Area.all[input.to_i - 1]
-            meals = WorldCusine::API.get_area_meals(area)
+            area = World_Cusine::Area.all[input.to_i - 1]
+            meals = World_Cusine::API.get_area_meals(area)
 
         puts "Here are the cusine options..."
         sleep 2 
@@ -61,7 +61,8 @@ class World_Cusine::CLI
         goodbye
         elsif
     
-        selected_meal = World_Cusine::Meal.meal_details(meal_id)
+        selected_meal = World_Cusine::Meal.get_meal_info
+        meal_ingredients = World_Cusine::Meal.meal_ingredients
 
         puts "Here is the meal you selected:"
         puts "=============================================================="
@@ -72,7 +73,7 @@ class World_Cusine::CLI
 
         puts "=============================================================="
         puts "Meal Ingredients:"
-        puts 
+        meal_ingredients 
 
         puts "Meal Instructions: #{Meal.strInstructions}"
 
@@ -80,6 +81,8 @@ class World_Cusine::CLI
             puts "Sorry that is not a valid option, please try a different number"
             list_meals
         end
+
+        puts ""
         
     
     end 
