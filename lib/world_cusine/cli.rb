@@ -17,7 +17,6 @@ class World_Cusine::CLI
         puts "#{name}, with World Cusine you can find tasty meals from all over the world!"
         sleep 2
         puts "Here is the list of cusine areas to explore:"
-        self.call
     end
 
     # def invalidate_input?(letter)
