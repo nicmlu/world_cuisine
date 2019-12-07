@@ -38,7 +38,8 @@ class World_Cusine::CLI
     end
 
     def list_areas 
-        World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{a.strArea}"}
+        World_Cusine::API.all_areas
+        World_Cusine::Area.all.each.with_index {|a, i| puts "#{i + 1}. #{a.strArea}"}
     end    
     
     def area_meals

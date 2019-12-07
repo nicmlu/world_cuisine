@@ -21,6 +21,22 @@ class World_Cusine::Meal
         args.each {|k,v|self.send(("#{k}="), v) if self.respond_to?(k)}
     end
 
+#     def self.new_by_name(strMeal)
+#     meal = self.new(strMeal)
+#     area_obj = Area.all.select {|area| area.strArea == area}
+#     if area_obj = [] 
+#       area_obj = Area.new(area)
+#     else
+#       area_obj = area_obj.pop
+#     end
+#       meal.area = area_obj
+#       meal
+#     end 
+  
+#   def area=(strArea)
+#     self.strArea = Area.find_or_create_by_name(artist)
+#   end
+
     # def meal_ingredients
     #     unless strIngredient1 == nil || strIngredient1 == ""
     #         puts "#{strIngredient1}: #{strMeasure1}"

@@ -5,12 +5,45 @@ class World_Cusine::Area
     @@all = []
 
     def initialize(args)
-        args.each {|k,v|self.send("#{k}=", v)}
-        @@all.push(self)
+        args.each {|k,v|self.send(("#{k}="), v)}
+        @@all << self
     end
 
     def self.all
         @@all
     end
+
+#     def self.new_by_name(strArea)
+#     area = self.new(strArea)
+#     meal_obj = Meal.all.select {|meal| meal.strMeal == meal}
+#     if meal_obj = [] 
+#       meal_obj = Meal.new(meal)
+#     else
+#       meal_obj = meal_obj.pop
+#     end
+#       area.meal = meal_obj
+#       area
+#     end 
+
+#     def self.find(strArea)
+#     searched_area = self.all.select {|area| area.strArea == strArea}
+#     if searched_area != []
+#       searched_area.pop
+#     else 
+#       self.new(strArea)
+#     end
+#   end
+
+#     def meals
+#         Meal.all.select {|meal| meal.strArea == self}
+#     end 
+
+#     def add_meal
+#         meal.strArea = self 
+#     end 
+
+#     def print_meals
+#         Meal.all.each {|meal| if meal.strArea == self then puts meal.strMeal end}
+#     end     
 
 end
