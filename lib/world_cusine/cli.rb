@@ -2,7 +2,6 @@ class World_Cusine::CLI
 
     def call 
     greeting
-    list_areas
     area_meals 
     meal_info
     # recipe_box
@@ -32,9 +31,11 @@ class World_Cusine::CLI
         puts "Welcome to World Cusine!"
         puts "What is your name?"
         name = gets.strip.capitalize
+        puts ""
         puts "#{name}, with World Cusine you can find tasty meals from all over the world!"
         sleep 2
         puts "Here is the list of cusine areas you can explore:"
+        list_areas
     end
 
     def list_areas 
