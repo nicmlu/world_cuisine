@@ -111,31 +111,29 @@ class World_Cusine::CLI
         end
     end 
 
-    # def another_search
-    #     puts "Would you like to search for another cocktail? Enter Y or N"
-    #        input = gets.chomp.downcase 
-    #     if input === "exit"
-    #         goodbye
-    #     end
-
-    #     puts ""
-    #     case input
-    #         when "y"
-    #         puts "Type the first letter of the cocktail you would like to search:"  
-    #         Kocktailz::Cocktails.all.clear  
-    #         list_cocktails 
-    #         more_info
-    #         another_search
-    #         goodbye
-    #         when "n"
-    #         goodbye
-    #     else
-    #         puts "I don't understand that answer. Enter Y or N"
-    #     end
-    # end 
+    def another_search
+        puts "Enter 'yes' to search for another meal..."
+        puts "Enter 'area' to search for another area..."
+        puts "Enter 'exit' to end the search..."
+           input = gets.chomp.downcase 
+        if input == "exit"
+            goodbye
+        end
+        puts ""
+        case input
+            when "yes"
+            area_meals
+            when "area"
+            list_areas
+        else
+            puts "I don't understand that answer."
+            another_search
+        end
+    end 
         
 
     def goodbye
         puts "Hope you we're able to explore some delicous destinations! Thank you for using World Cusine!"
+        exit
     end 
 end
