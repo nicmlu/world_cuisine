@@ -29,13 +29,17 @@ class World_Cusine::CLI
         sleep 2
         puts ""
         puts "Welcome to World Cusine!"
+        puts ""
         puts "What is your name?"
+        puts ""
         name = gets.strip.capitalize
         puts ""
-        puts "#{name}, with World Cusine you can find tasty meals from all over the world!"
+        puts "Hi #{name}! World Cusine makes it easy for you to find tasty recipes from all over the world!"
+        puts ""
         sleep 4
         puts "Here is the list of cusine areas you can explore:"
         sleep 4
+        puts ""
         list_areas
     end
 
@@ -53,11 +57,15 @@ class World_Cusine::CLI
         if input == "exit"
         goodbye
         elsif (1..World_Cusine::Area.all.size).include?(input.to_i)
+            puts ""
             puts "What a great area to explore! Let's see what meals you can cook up..."
+            puts ""
             sleep 2
             area = World_Cusine::Area.all[input.to_i - 1]
             
             puts "Here are the cusine options..."
+            puts ""
+            puts ""
             sleep 2 
             World_Cusine::API.get_area_meals(area)
             World_Cusine::Meal.all.each.with_index {|m, i| puts "#{i + 1}. #{m.strMeal}"}
@@ -68,8 +76,11 @@ class World_Cusine::CLI
     end 
 
     def meal_info 
-
+        
+        puts ""
+        puts ""
         puts "To see more information about a meal, type in the number of that meal or type in exit to end the search..."
+        puts ""
         
         input = gets.chomp 
         if input == "exit"
@@ -80,37 +91,44 @@ class World_Cusine::CLI
         puts "=============================================================="
     
         selected_meal = World_Cusine::Meal.all[input.to_i - 1]
-        World_Cusine::Meal.get_meal_info(selected_meal)
+        # binding.pry
+        selected_meal_id_str = selected_meal.idMeal
+        selected_meal_id_int = selected_meal_id_str.to_i
+        # meal_id = selected_meal_id.to_i
+        selected_meal_hash = World_Cusine::API.get_meal_info(selected_meal_id_int)
+        selected_meal_info = selected_meals_hash["meals"]
+        binding.pry
+        
 
-        puts "Meal Name: #{Meal.strMeal}"
-        puts "Meal Category: #{Meal.strCategory}"
-        puts "Meal Area: #{Meal.strArea}"
+        puts "Meal Name: #{selected_meal.strMeal}"
+        puts "Meal Category: #{selected_meal_info.strCategory}"
+        puts "Meal Area: #{meal_info.strArea}"
 
         puts "=============================================================="
         puts "Meal Ingredients: "
-        puts "#{strIngredient1}: #{strMeasure1}" unless strIngredient1 == "null" || strIngredient1 == ""
-        puts "#{strIngredient2}: #{strMeasure2}" unless strIngredient2 == "null" || strIngredient2 == ""
-        puts "#{strIngredient3}: #{strMeasure3}" unless strIngredient3 == "null" || strIngredient3 == ""
-        puts "#{strIngredient4}: #{strMeasure4}" unless strIngredient4 == "null" || strIngredient4 == ""
-        puts "#{strIngredient5}: #{strMeasure5}" unless strIngredient5 == "null" || strIngredient5 == ""
-        puts "#{strIngredient6}: #{strMeasure6}" unless strIngredient6 == "null" || strIngredient6 == ""
-        puts "#{strIngredient7}: #{strMeasure7}" unless strIngredient7 == "null" || strIngredient7 == ""
-        puts "#{strIngredient8}: #{strMeasure8}" unless strIngredient8 == "null" || strIngredient8 == ""
-        puts "#{strIngredient9}: #{strMeasure9}" unless strIngredient9 == "null" || strIngredient9 == ""
-        puts "#{strIngredient10}: #{strMeasure10}" unless strIngredient10 == "null" || strIngredient10 == ""
-        puts "#{strIngredient11}: #{strMeasure11}" unless strIngredient11 == "null" || strIngredient11 == ""
-        puts "#{strIngredient12}: #{strMeasure12}" unless strIngredient12 == "null" || strIngredient12 == ""
-        puts "#{strIngredient13}: #{strMeasure13}" unless strIngredient13 == "null" || strIngredient13 == ""
-        puts "#{strIngredient14}: #{strMeasure14}" unless strIngredient14 == "null" || strIngredient14 == ""
-        puts "#{strIngredient15}: #{strMeasure15}" unless strIngredient15 == "null" || strIngredient15 == ""
-        puts "#{strIngredient16}: #{strMeasure16}" unless strIngredient16 == "null" || strIngredient16 == ""
-        puts "#{strIngredient17}: #{strMeasure17}" unless strIngredient17 == "null" || strIngredient17 == ""
-        puts "#{strIngredient18}: #{strMeasure18}" unless strIngredient18 == "null" || strIngredient18 == ""
-        puts "#{strIngredient19}: #{strMeasure19}" unless strIngredient19 == "null" || strIngredient19 == ""
-        puts "#{strIngredient20}: #{strMeasure20}" unless strIngredient20 == "null" || strIngredient20 == ""
+        puts "#{selected_meal.strIngredient1}: #{selected_meal.strMeasure1}" unless selected_meal.strIngredient1 == "null" || selected_meal.strIngredient1 == ""
+        puts "#{selected_meal.strIngredient2}: #{selected_meal.strMeasure2}" unless selected_meal.strIngredient2 == "null" || selected_meal.strIngredient2 == ""
+        puts "#{selected_meal.strIngredient3}: #{selected_meal.strMeasure3}" unless selected_meal.strIngredient3 == "null" || selected_meal.strIngredient3 == ""
+        puts "#{selected_meal.strIngredient4}: #{selected_meal.strMeasure4}" unless selected_meal.strIngredient4 == "null" || selected_meal.strIngredient4 == ""
+        puts "#{selected_meal.strIngredient5}: #{selected_meal.strMeasure5}" unless selected_meal.strIngredient5 == "null" || selected_meal.strIngredient5 == ""
+        puts "#{selected_meal.strIngredient6}: #{selected_meal.strMeasure6}" unless selected_meal.strIngredient6 == "null" || selected_meal.strIngredient6 == ""
+        puts "#{selected_meal.strIngredient7}: #{selected_meal.strMeasure7}" unless selected_meal.strIngredient7 == "null" || selected_meal.strIngredient7 == ""
+        puts "#{selected_meal.strIngredient8}: #{selected_meal.strMeasure8}" unless selected_meal.strIngredient8 == "null" || selected_meal.strIngredient8 == ""
+        puts "#{selected_meal.strIngredient9}: #{selected_meal.strMeasure9}" unless selected_meal.strIngredient9 == "null" || selected_meal.strIngredient9 == ""
+        puts "#{selected_meal.strIngredient10}: #{selected_meal.strMeasure10}" unless selected_meal.strIngredient10 == "null" || selected_meal.strIngredient10 == ""
+        puts "#{selected_meal.strIngredient11}: #{selected_meal.strMeasure11}" unless selected_meal.strIngredient11 == "null" || selected_meal.strIngredient11 == ""
+        puts "#{selected_meal.strIngredient12}: #{selected_meal.strMeasure12}" unless selected_meal.strIngredient12 == "null" || selected_meal.strIngredient12 == ""
+        puts "#{selected_meal.strIngredient13}: #{selected_meal.strMeasure13}" unless selected_meal.strIngredient13 == "null" || selected_meal.strIngredient13 == ""
+        puts "#{selected_meal.strIngredient14}: #{selected_meal.strMeasure14}" unless selected_meal.strIngredient14 == "null" || selected_meal.strIngredient14 == ""
+        puts "#{selected_meal.strIngredient15}: #{selected_meal.strMeasure15}" unless selected_meal.strIngredient15 == "null" || selected_meal.strIngredient15 == ""
+        puts "#{selected_meal.strIngredient16}: #{selected_meal.strMeasure16}" unless selected_meal.strIngredient16 == "null" || selected_meal.strIngredient16 == ""
+        puts "#{selected_meal.strIngredient17}: #{selected_meal.strMeasure17}" unless selected_meal.strIngredient17 == "null" || selected_meal.strIngredient17 == ""
+        puts "#{selected_meal.strIngredient18}: #{selected_meal.strMeasure18}" unless selected_meal.strIngredient18 == "null" || selected_meal.strIngredient18 == ""
+        puts "#{selected_meal.strIngredient19}: #{selected_meal.strMeasure19}" unless selected_meal.strIngredient19 == "null" || selected_meal.strIngredient19 == ""
+        puts "#{selected_meal.strIngredient20}: #{selected_meal.strMeasure20}" unless selected_meal.strIngredient20 == "null" || selected_meal.strIngredient20 == ""
 
         puts "=============================================================="
-        puts "Meal Instructions: #{Meal.strInstructions}"
+        puts "Meal Instructions: #{selected_meal.strInstructions}"
 
         else 
             puts "Sorry that is not a valid option, please try a different number"

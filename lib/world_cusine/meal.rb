@@ -9,7 +9,7 @@ class World_Cusine::Meal
         @@all.push(self)
     end
 
-    def self.recipe_box
+    def recipe_box
         @@recipe_box.push(self)
     end 
 
@@ -32,10 +32,6 @@ class World_Cusine::Meal
 #       meal.area = area_obj
 #       meal
 #     end 
-  
-#   def area=(strArea)
-#     self.strArea = Area.find_or_create_by_name(artist)
-#   end
 
     # def meal_ingredients
     #     unless strIngredient1 == nil || strIngredient1 == ""
