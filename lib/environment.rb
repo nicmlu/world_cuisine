@@ -1,5 +1,9 @@
-require 'httparty'
 require 'pry'
+require 'json'
+require 'httparty'
+require 'rest-client'
+require 'exits'
+
 require_relative "./world_cusine/version"
 require_relative "./world_cusine/api"
 require_relative "./world_cusine/area"
