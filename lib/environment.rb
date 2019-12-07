@@ -1,5 +1,5 @@
-require "httparty"
-require "pry"
+require 'httparty'
+require 'pry'
 require_relative "world_cusine/version"
 require_relative "world_cusine/api"
 require_relative "world_cusine/area"
