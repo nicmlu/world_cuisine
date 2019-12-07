@@ -1,29 +1,7 @@
 class World_Cusine::CLI
 
     def call 
-    puts "    ---   --   ---                                         "
-    puts "    ---   --   ---                                         "
-    puts "    ---   --   ---                                         "
-    puts "    ---   --   ---                                         "
-    puts "    ---   --   ---                                         "
-    puts "    ---   --   ---                                         "
-    puts "    ---   --   --- ----------WELCOME-----------                "
-    puts "     ---      ---  -----------TO-----------                  "
-    puts "      --- -- ---     ------KOCKTAILZ-----                    "
-    puts "         ----        ----------------                      "
-    puts "         ----          ------------                        "
-    puts "         ----            --------                          "
-    puts "         ----             ------                           "
-    puts "         ----              ====                            "
-    puts "         ----               ==                             "
-    puts "         ----               ==                             "
-    puts "         ----               ==                             "
-    puts "         ----               ==                             "
-    puts "         ----               ==                             "
-    puts "         ----                                              "
-    puts "     ================================================   "
-    greeting
-    list_areas 
+    greeting 
     meal_info
     another_search
     goodbye
@@ -36,16 +14,17 @@ class World_Cusine::CLI
         name = gets.strip.capitalize
         puts "#{name}, with World Cusine you can find tasty meals from all over the world!"
         sleep 2
-        puts "To see a list of areas, type in 'list'."
-        puts "If you're no longer interested in tasty bites from around the world, type in 'exit'."
-        input = gets.chomp.downcase 
+        puts "Here is the list of cusine areas to explore:"
+        list_areas
+        # puts "If you're no longer interested in tasty bites from around the world, type in 'exit'."
+        # input = gets.chomp.downcase 
 
-        case input
-        when 'list'
-            area_list 
-        when 'exit'
-            goodbye 
-        end 
+        # case input
+        # when 'list'
+        #     list_areas 
+        # when 'exit'
+        #     goodbye 
+        # end 
         self.call
     end
 
@@ -55,8 +34,14 @@ class World_Cusine::CLI
 
     def list_areas 
         World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{d.strArea}"}
-        list_meals
-    end     
+        # list_meals
+    end    
+    
+    def select_area
+        puts "To see a list of meals from an area, type in the number of that area."
+    end 
+
+
     
 
     def list_meals
