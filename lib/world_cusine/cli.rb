@@ -49,11 +49,9 @@ class World_Cusine::CLI
         self.call
     end
 
-    end
-
-    def invalidate_input?(letter)
-        letter.match(/\W/) || letter.match(/[xu8]/)
-    end 
+    # def invalidate_input?(letter)
+    #     letter.match(/\W/) || letter.match(/[xu8]/)
+    # end 
 
     def list_areas 
         World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{d.strArea}"}
@@ -73,62 +71,62 @@ class World_Cusine::CLI
         area = World_Cusine::Area.all[input.to_i - 1]
         meals = World_Cusine::API.get_area_meals(area)
 
-        puts "Here are the cusine options from #{area}"
+        puts "Here are the cusine options from #{area}..."
+        sleep 2 
 
-        meals.each.with_index do |meal_hash, index| puts "#{index + 1}. #{Meal.strMeal}"
-        
+        meals.each.with_index {|meal_hash, index| puts "#{index + 1}. #{Meal.strMeal}"}
         else 
             puts "Sorry that is not a valid option, please try a different number"
             list_meals
         end
     end 
 
-    def meal_info 
-        puts "Here is the meal you selected:"
-        puts "=============================================================="
+    # def meal_info 
+    #     puts "Here is the meal you selected:"
+    #     puts "=============================================================="
         
-        input = gets.chomp 
-        if input === "exit"
-        goodbye
-        elsif
+    #     input = gets.chomp 
+    #     if input === "exit"
+    #     goodbye
+    #     elsif
     
-        selected_meal = World_Cusine::Meal.get_meal_info(meal_id)
+    #     selected_meal = World_Cusine::Meal.get_meal_info(meal_id)
 
-        puts "Meal Name: #{Meal.strMeal}"
-        puts "Meal Category: #{Meal.strCategory}"
-        puts "Meal Area: #{Meal.strArea}"
-        puts "Meal Instructions: #{Meal.strInstructions}"
+    #     puts "Meal Name: #{Meal.strMeal}"
+    #     puts "Meal Category: #{Meal.strCategory}"
+    #     puts "Meal Area: #{Meal.strArea}"
+    #     puts "Meal Instructions: #{Meal.strInstructions}"
 
-        else 
-            puts "Sorry that is not a valid option, please try a different number"
-            list_meals
-        end
+    #     else 
+    #         puts "Sorry that is not a valid option, please try a different number"
+    #         list_meals
+    #     end
         
     
-    end 
+    # end 
 
-    def another_search
-        puts "Would you like to search for another cocktail? Enter Y or N"
-           input = gets.chomp.downcase 
-        if input === "exit"
-            goodbye
-        end
+    # def another_search
+    #     puts "Would you like to search for another cocktail? Enter Y or N"
+    #        input = gets.chomp.downcase 
+    #     if input === "exit"
+    #         goodbye
+    #     end
 
-        puts ""
-        case input
-            when "y"
-            puts "Type the first letter of the cocktail you would like to search:"  
-            Kocktailz::Cocktails.all.clear  
-            list_cocktails 
-            more_info
-            another_search
-            goodbye
-            when "n"
-            goodbye
-        else
-            puts "I don't understand that answer. Enter Y or N"
-        end
-    end 
+    #     puts ""
+    #     case input
+    #         when "y"
+    #         puts "Type the first letter of the cocktail you would like to search:"  
+    #         Kocktailz::Cocktails.all.clear  
+    #         list_cocktails 
+    #         more_info
+    #         another_search
+    #         goodbye
+    #         when "n"
+    #         goodbye
+    #     else
+    #         puts "I don't understand that answer. Enter Y or N"
+    #     end
+    # end 
         
 
     def goodbye
