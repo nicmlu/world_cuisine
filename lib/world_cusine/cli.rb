@@ -27,6 +27,7 @@ class World_Cusine::CLI
         puts " ==================================================================== "
         puts " ==================================================================== "
         sleep 2
+        puts ""
         puts "Welcome to World Cusine!"
         puts "What is your name?"
         name = gets.strip.capitalize
@@ -35,35 +36,28 @@ class World_Cusine::CLI
         puts "Here is the list of cusine areas you can explore:"
     end
 
-    # def invalidate_input?(letter)
-    #     letter.match(/\W/) || letter.match(/[xu8]/)
-    # end 
-
     def list_areas 
         World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{a.strArea}"}
-        # list_meals
     end    
     
     def area_meals
+        puts ""
         puts "To see a list of meals from an area, type in the number of that area or type in exit to end the search..."
+        puts ""
         input = gets.chomp.downcase  
-        if input === "exit"
+        if input == "exit"
         goodbye
         elsif (1..World_Cusine::Area.all.size).include?(input.to_i)
             puts "What a great area to explore! Let's see what meals you can cook up..."
             sleep 2
             area = World_Cusine::Area.all[input.to_i - 1]
-            meals = World_Cusine::API.get_area_meals(area)
-
-        puts "Here are the cusine options..."
-        sleep 2 
-
-        meals.each.with_index {|meal_hash, index| puts "#{index + 1}. #{Meal.strMeal}"}
+            puts "Here are the cusine options..."
+            sleep 2 
+            World_Cusine::API.get_area_meals(area).each.with_index {|m, i| puts "#{i + 1}. #{m.strMeal}"}
         else 
             puts "Sorry, but that is not a valid option. Please type in a different area number..."
-            list_meals
+            area_meals
         end
-
     end 
 
     def meal_info 
