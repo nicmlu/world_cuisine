@@ -37,7 +37,6 @@ class World_Cusine::CLI
         puts "#{name}, with World Cusine you can find tasty meals from all over the world!"
         sleep 2
         puts "To see a list of areas, type in 'list'."
-        puts "If you have an area in mind, type in the name of the area to see what meals we cook up!"
         puts "If you're no longer interested in tasty bites from around the world, type in 'exit'."
         input = gets.chomp.downcase 
 
@@ -64,14 +63,14 @@ class World_Cusine::CLI
 
     def more_info
         puts "=============================================================="
-        puts "Enter the number of the area where you'd like to expand your palate?:"
+        puts "Enter the number of the area where you'd like to expand your palate or enter 'exit' to end the search:"
         puts ""
         input = gets.chomp 
         if input === "exit"
         goodbye
-        elsif (1..Kocktailz::Cocktails.all.size).include?(input.to_i)
+        elsif (1..World_Cusine::Area.all.size).include?(input.to_i)
     
-        cocktail = Kocktailz::Cocktails.all[input.to_i - 1]
+        meal = World_Cusine::Meal.all[input.to_i - 1]
         Kocktailz::API.get_single_cocktail(cocktail)
 
         puts "strDrink: #{cocktail.strDrink}"
