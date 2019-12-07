@@ -2,6 +2,7 @@ class World_Cusine::CLI
 
     def call 
     greeting
+    list_areas
     area_meals 
     meal_info
     another_search
@@ -16,7 +17,6 @@ class World_Cusine::CLI
         puts "#{name}, with World Cusine you can find tasty meals from all over the world!"
         sleep 2
         puts "Here is the list of cusine areas to explore:"
-        list_areas
         self.call
     end
 
@@ -25,7 +25,7 @@ class World_Cusine::CLI
     # end 
 
     def list_areas 
-        World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{d.strArea}"}
+        World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{a.strArea}"}
         # list_meals
     end    
     
