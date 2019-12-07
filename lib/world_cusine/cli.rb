@@ -1,7 +1,8 @@
 class World_Cusine::CLI
 
     def call 
-    greeting 
+    greeting
+    area_meals 
     meal_info
     another_search
     goodbye
@@ -16,15 +17,6 @@ class World_Cusine::CLI
         sleep 2
         puts "Here is the list of cusine areas to explore:"
         list_areas
-        # puts "If you're no longer interested in tasty bites from around the world, type in 'exit'."
-        # input = gets.chomp.downcase 
-
-        # case input
-        # when 'list'
-        #     list_areas 
-        # when 'exit'
-        #     goodbye 
-        # end 
         self.call
     end
 
@@ -33,30 +25,22 @@ class World_Cusine::CLI
     # end 
 
     def list_areas 
-        World_Cusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{d.strArea}"}
+        WorldCusine::API.all_areas.each.with_index {|a, i| puts "#{i + 1}. #{d.strArea}"}
         # list_meals
     end    
     
-    def select_area
-        puts "To see a list of meals from an area, type in the number of that area."
-    end 
-
-
-    
-
-    def list_meals
-        puts "=============================================================="
-        puts "Enter the number of the area where you'd like to expand your palate or enter 'exit' to end the search:"
-        puts ""
-        input = gets.chomp 
+    def area_meals
+        puts "To see a list of meals from an area, type in the number of that area or type in exit to end the search."
+        input = gets.chomp.downcase  
         if input === "exit"
         goodbye
-        elsif (1..World_Cusine::Area.all.size).include?(input.to_i)
-    
-        area = World_Cusine::Area.all[input.to_i - 1]
-        meals = World_Cusine::API.get_area_meals(area)
+        elsif (1..WorldCusine::Area.all.size).include?(input.to_i)
+            puts "What a great area to explore! Let's see what meals you can cook up..."
+            sleep 2
+            area = WorldCusine::Area.all[input.to_i - 1]
+            meals = WorldCusine::API.get_area_meals(area)
 
-        puts "Here are the cusine options from #{area}..."
+        puts "Here are the cusine options..."
         sleep 2 
 
         meals.each.with_index {|meal_hash, index| puts "#{index + 1}. #{Meal.strMeal}"}
@@ -64,6 +48,7 @@ class World_Cusine::CLI
             puts "Sorry that is not a valid option, please try a different number"
             list_meals
         end
+
     end 
 
     # def meal_info 
