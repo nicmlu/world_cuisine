@@ -37,7 +37,7 @@ class World_Cuisine::CLI
 
     def list_areas 
         puts ""
-        puts " ==================================================================== "
+        puts "===================================================================== "
         puts "Here is the list of cuisine areas you can explore:"
         sleep 1
         World_Cuisine::API.all_areas
@@ -64,7 +64,7 @@ class World_Cuisine::CLI
             puts ""
             sleep 1
             puts ""
-            puts " ==================================================================== "
+            puts "===================================================================== "
             puts "Here are the cuisine options..."
             puts ""
             puts ""
@@ -199,7 +199,7 @@ class World_Cuisine::CLI
         puts ""
         puts "============================================================================================"
         puts ""
-        puts "Hope you we're able to explore some delicous destinations! Thank you for using World Cusine!"
+        puts "Hope you we're able to explore some delicous destinations! Thank you for using World Cuisine!"
         puts ""
         puts ""
         exit
