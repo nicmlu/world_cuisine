@@ -1,28 +1,17 @@
-# WorldCusine
+# World Cuisine
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/world_cusine`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to view meals from 24 countries around the world, sourced from The Meal DB Api. Users can choose an area to explore and view meal ideas from that area. Users can also drill down to see more details about the meal including ingredients and cooking instructions. 
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'world_cusine'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
+You can install this gem by typing the following prompt in your terminal: 
     $ gem install world_cusine
+
+The World Cuisine CLI will be installed and you can run world_cuisine to get a list of meal areas right in your command line. 
 
 ## Usage
 
-TODO: Write usage instructions here
+Run: `bin/run` after installing the gem. 
 
 ## Development
 
