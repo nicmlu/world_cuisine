@@ -86,7 +86,8 @@ class World_Cusine::CLI
         if input == "exit"
         goodbye
         elsif (1..World_Cusine::Meal.all.size).include?(input.to_i)
-        
+
+        puts ""
         puts "Here is the meal you selected:"
         puts "=============================================================="
     
@@ -96,39 +97,39 @@ class World_Cusine::CLI
         selected_meal_id_int = selected_meal_id_str.to_i
         # meal_id = selected_meal_id.to_i
         selected_meal_hash = World_Cusine::API.get_meal_info(selected_meal_id_int)
-        selected_meal_info = selected_meals_hash["meals"]
-        binding.pry
+        selected_meal_info = selected_meal_hash["meals"]
+        # binding.pry
         
 
-        puts "Meal Name: #{selected_meal.strMeal}"
-        puts "Meal Category: #{selected_meal_info.strCategory}"
-        puts "Meal Area: #{meal_info.strArea}"
+        puts "Meal Name: #{selected_meal_info[0]["strMeal"]}"
+        puts "Meal Category: #{selected_meal_info[0]["strCategory"]}"
+        puts "Meal Area: #{selected_meal_info[0]["strArea"]}"
 
         puts "=============================================================="
         puts "Meal Ingredients: "
-        puts "#{selected_meal.strIngredient1}: #{selected_meal.strMeasure1}" unless selected_meal.strIngredient1 == "null" || selected_meal.strIngredient1 == ""
-        puts "#{selected_meal.strIngredient2}: #{selected_meal.strMeasure2}" unless selected_meal.strIngredient2 == "null" || selected_meal.strIngredient2 == ""
-        puts "#{selected_meal.strIngredient3}: #{selected_meal.strMeasure3}" unless selected_meal.strIngredient3 == "null" || selected_meal.strIngredient3 == ""
-        puts "#{selected_meal.strIngredient4}: #{selected_meal.strMeasure4}" unless selected_meal.strIngredient4 == "null" || selected_meal.strIngredient4 == ""
-        puts "#{selected_meal.strIngredient5}: #{selected_meal.strMeasure5}" unless selected_meal.strIngredient5 == "null" || selected_meal.strIngredient5 == ""
-        puts "#{selected_meal.strIngredient6}: #{selected_meal.strMeasure6}" unless selected_meal.strIngredient6 == "null" || selected_meal.strIngredient6 == ""
-        puts "#{selected_meal.strIngredient7}: #{selected_meal.strMeasure7}" unless selected_meal.strIngredient7 == "null" || selected_meal.strIngredient7 == ""
-        puts "#{selected_meal.strIngredient8}: #{selected_meal.strMeasure8}" unless selected_meal.strIngredient8 == "null" || selected_meal.strIngredient8 == ""
-        puts "#{selected_meal.strIngredient9}: #{selected_meal.strMeasure9}" unless selected_meal.strIngredient9 == "null" || selected_meal.strIngredient9 == ""
-        puts "#{selected_meal.strIngredient10}: #{selected_meal.strMeasure10}" unless selected_meal.strIngredient10 == "null" || selected_meal.strIngredient10 == ""
-        puts "#{selected_meal.strIngredient11}: #{selected_meal.strMeasure11}" unless selected_meal.strIngredient11 == "null" || selected_meal.strIngredient11 == ""
-        puts "#{selected_meal.strIngredient12}: #{selected_meal.strMeasure12}" unless selected_meal.strIngredient12 == "null" || selected_meal.strIngredient12 == ""
-        puts "#{selected_meal.strIngredient13}: #{selected_meal.strMeasure13}" unless selected_meal.strIngredient13 == "null" || selected_meal.strIngredient13 == ""
-        puts "#{selected_meal.strIngredient14}: #{selected_meal.strMeasure14}" unless selected_meal.strIngredient14 == "null" || selected_meal.strIngredient14 == ""
-        puts "#{selected_meal.strIngredient15}: #{selected_meal.strMeasure15}" unless selected_meal.strIngredient15 == "null" || selected_meal.strIngredient15 == ""
-        puts "#{selected_meal.strIngredient16}: #{selected_meal.strMeasure16}" unless selected_meal.strIngredient16 == "null" || selected_meal.strIngredient16 == ""
-        puts "#{selected_meal.strIngredient17}: #{selected_meal.strMeasure17}" unless selected_meal.strIngredient17 == "null" || selected_meal.strIngredient17 == ""
-        puts "#{selected_meal.strIngredient18}: #{selected_meal.strMeasure18}" unless selected_meal.strIngredient18 == "null" || selected_meal.strIngredient18 == ""
-        puts "#{selected_meal.strIngredient19}: #{selected_meal.strMeasure19}" unless selected_meal.strIngredient19 == "null" || selected_meal.strIngredient19 == ""
-        puts "#{selected_meal.strIngredient20}: #{selected_meal.strMeasure20}" unless selected_meal.strIngredient20 == "null" || selected_meal.strIngredient20 == ""
+        puts "#{selected_meal_info[0]["strIngredient1"]}: #{selected_meal_info[0]["strMeasure1"]}" unless selected_meal_info[0]["strIngredient1"] == "null" || selected_meal_info[0]["strIngredient1"] == ""
+        puts "#{selected_meal_info[0]["strIngredient2"]}: #{selected_meal_info[0]["strMeasure2"]}" unless selected_meal_info[0]["strIngredient2"] == "null" || selected_meal_info[0]["strIngredient2"] == ""
+        puts "#{selected_meal_info[0]["strIngredient3"]}: #{selected_meal_info[0]["strMeasure3"]}" unless selected_meal_info[0]["strIngredient3"] == "null" || selected_meal_info[0]["strIngredient3"] == ""
+        puts "#{selected_meal_info[0]["strIngredient4"]}: #{selected_meal_info[0]["strMeasure4"]}" unless selected_meal_info[0]["strIngredient4"] == "null" || selected_meal_info[0]["strIngredient4"] == ""
+        puts "#{selected_meal_info[0]["strIngredient5"]}: #{selected_meal_info[0]["strMeasure5"]}" unless selected_meal_info[0]["strIngredient5"] == "null" || selected_meal_info[0]["strIngredient5"] == ""
+        puts "#{selected_meal_info[0]["strIngredient6"]}: #{selected_meal_info[0]["strMeasure6"]}" unless selected_meal_info[0]["strIngredient6"] == "null" || selected_meal_info[0]["strIngredient6"] == ""
+        puts "#{selected_meal_info[0]["strIngredient7"]}: #{selected_meal_info[0]["strMeasure7"]}" unless selected_meal_info[0]["strIngredient7"] == "null" || selected_meal_info[0]["strIngredient7"] == ""
+        puts "#{selected_meal_info[0]["strIngredient8"]}: #{selected_meal_info[0]["strMeasure8"]}" unless selected_meal_info[0]["strIngredient8"] == "null" || selected_meal_info[0]["strIngredient8"] == ""
+        puts "#{selected_meal_info[0]["strIngredient9"]}: #{selected_meal_info[0]["strMeasure9"]}" unless selected_meal_info[0]["strIngredient9"] == "null" || selected_meal_info[0]["strIngredient9"] == ""
+        puts "#{selected_meal_info[0]["strIngredient10"]}: #{selected_meal_info[0]["strMeasure10"]}" unless selected_meal_info[0]["strIngredient10"] == "null" || selected_meal_info[0]["strIngredient10"] == ""
+        puts "#{selected_meal_info[0]["strIngredient11"]}: #{selected_meal_info[0]["strMeasure11"]}" unless selected_meal_info[0]["strIngredient11"] == "null" || selected_meal_info[0]["strIngredient11"] == ""
+        puts "#{selected_meal_info[0]["strIngredient12"]}: #{selected_meal_info[0]["strMeasure12"]}" unless selected_meal_info[0]["strIngredient12"] == "null" || selected_meal_info[0]["strIngredient12"] == ""
+        puts "#{selected_meal_info[0]["strIngredient13"]}: #{selected_meal_info[0]["strMeasure13"]}" unless selected_meal_info[0]["strIngredient13"] == "null" || selected_meal_info[0]["strIngredient13"] == ""
+        puts "#{selected_meal_info[0]["strIngredient14"]}: #{selected_meal_info[0]["strMeasure14"]}" unless selected_meal_info[0]["strIngredient14"] == "null" || selected_meal_info[0]["strIngredient14"] == ""
+        puts "#{selected_meal_info[0]["strIngredient15"]}: #{selected_meal_info[0]["strMeasure15"]}" unless selected_meal_info[0]["strIngredient15"] == "null" || selected_meal_info[0]["strIngredient15"] == ""
+        puts "#{selected_meal_info[0]["strIngredient16"]}: #{selected_meal_info[0]["strMeasure16"]}" unless selected_meal_info[0]["strIngredient16"] == "null" || selected_meal_info[0]["strIngredient16"] == ""
+        puts "#{selected_meal_info[0]["strIngredient17"]}: #{selected_meal_info[0]["strMeasure17"]}" unless selected_meal_info[0]["strIngredient17"] == "null" || selected_meal_info[0]["strIngredient17"] == ""
+        puts "#{selected_meal_info[0]["strIngredient18"]}: #{selected_meal_info[0]["strMeasure18"]}" unless selected_meal_info[0]["strIngredient18"] == "null" || selected_meal_info[0]["strIngredient18"] == ""
+        puts "#{selected_meal_info[0]["strIngredient19"]}: #{selected_meal_info[0]["strMeasure19"]}" unless selected_meal_info[0]["strIngredient19"] == "null" || selected_meal_info[0]["strIngredient19"] == ""
+        puts "#{selected_meal_info[0]["strIngredient20"]}: #{selected_meal_info[0]["strMeasure20"]}" unless selected_meal_info[0]["strIngredient20"] == "null" || selected_meal_info[0]["strIngredient20"] == ""
 
         puts "=============================================================="
-        puts "Meal Instructions: #{selected_meal.strInstructions}"
+        puts "Meal Instructions: #{selected_meal_info[0]["strInstructions"]}"
 
         else 
             puts "Sorry that is not a valid option, please try a different number"
