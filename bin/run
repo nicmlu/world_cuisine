@@ -2,4 +2,4 @@
 
 require_relative "../lib/environment"
 
-World_Cusine::CLI.new.call
+World_Cuisine::CLI.new.call
