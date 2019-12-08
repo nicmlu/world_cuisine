@@ -1,10 +1,10 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "world_cusine/version"
+require "world_cuisine/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "world_cusine"
-  spec.version       = WorldCusine::VERSION
+  spec.name          = "world_cuisine"
+  spec.version       = WorldCuisine::VERSION
   spec.authors       = ["nicmlu"]
   spec.email         = ["NicoleMLucien@gmail.com"]
 
