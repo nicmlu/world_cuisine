@@ -72,8 +72,10 @@ class World_Cuisine::CLI
             World_Cuisine::Meal.all.each.with_index {|m, i| puts "#{i + 1}. #{m.strMeal}"}
             meal_info
         else 
+            puts ""
+            puts ""
             puts "Sorry, but that is not a valid option. Please type in a different area number..."
-            area_meals
+            list_areas
         end
     end 
 
@@ -134,7 +136,7 @@ class World_Cuisine::CLI
         another_search
         else 
             puts "Sorry that is not a valid option, please try a different number"
-            list_meals
+            list_areas
         end
     end 
 
@@ -188,6 +190,8 @@ class World_Cuisine::CLI
             when "exit"
             goodbye
         else
+            puts ""
+            puts ""
             puts "I don't understand that answer."
             another_search
         end
