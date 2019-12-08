@@ -27,6 +27,8 @@ class World_Cuisine::CLI
     end
 
     def list_areas 
+        World_Cuisine::Meal.clear_all
+        World_Cuisine::Area.clear_all
         puts ""
         puts "===================================================================== "
         puts "Here is the list of cuisine areas you can explore:"

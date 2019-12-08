@@ -6,12 +6,17 @@ class World_Cuisine::Area
 
     def initialize(args)
         args.each {|k,v|self.send(("#{k}="), v)}
-        @@all << self
+        @@all << self 
+        # unless @@all.include?(self)
     end
 
     def self.all
         @@all
     end
+
+    def self.clear_all
+        @@all.clear
+    end     
 
 #     def self.find(strArea)
 #     searched_area = self.all.select {|area| area.strArea == strArea}

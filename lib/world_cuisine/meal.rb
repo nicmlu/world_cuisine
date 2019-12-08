@@ -22,4 +22,8 @@ class World_Cuisine::Meal
         args.each {|k,v|self.send(("#{k}="), v) if self.respond_to?(k)}
     end
 
+    def self.clear_all
+        @@all.clear
+    end 
+
 end
