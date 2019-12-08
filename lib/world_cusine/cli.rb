@@ -1,4 +1,4 @@
-class World_Cusine::CLI
+class World_Cuisine::CLI
 
     def call 
     greeting
@@ -23,13 +23,13 @@ class World_Cusine::CLI
         puts " ==================================================================== "
         sleep 1
         puts ""
-        puts "Welcome to World Cusine!"
+        puts "Welcome to World Cuisine!"
         puts ""
         puts "What is your name?"
         puts ""
         name = gets.strip.capitalize
         puts ""
-        puts "Hi #{name}! World Cusine makes it easy for you to find tasty recipes from all over the world!"
+        puts "Hi #{name}! World Cuisine makes it easy for you to find tasty recipes from all over the world!"
         puts ""
         sleep 1
         list_areas
@@ -38,10 +38,10 @@ class World_Cusine::CLI
     def list_areas 
         puts ""
         puts " ==================================================================== "
-        puts "Here is the list of cusine areas you can explore:"
+        puts "Here is the list of cuisine areas you can explore:"
         sleep 1
-        World_Cusine::API.all_areas
-        World_Cusine::Area.all.each.with_index {|a, i| puts "#{i + 1}. #{a.strArea}"}
+        World_Cuisine::API.all_areas
+        World_Cuisine::Area.all.each.with_index {|a, i| puts "#{i + 1}. #{a.strArea}"}
         puts ""
         puts ""
         area_meals
@@ -55,21 +55,21 @@ class World_Cusine::CLI
         input = gets.chomp.downcase  
         if input == "exit"
         goodbye
-        elsif (1..World_Cusine::Area.all.size).include?(input.to_i)
+        elsif (1..World_Cuisine::Area.all.size).include?(input.to_i)
             
-            area = World_Cusine::Area.all[input.to_i - 1]
-            World_Cusine::API.get_area_meals(area)
+            area = World_Cuisine::Area.all[input.to_i - 1]
+            World_Cuisine::API.get_area_meals(area)
             puts ""
             puts "What a great area to explore! Let's see what meals you can cook up..."
             puts ""
             sleep 1
             puts ""
             puts " ==================================================================== "
-            puts "Here are the cusine options..."
+            puts "Here are the cuisine options..."
             puts ""
             puts ""
             sleep 1 
-            World_Cusine::Meal.all.each.with_index {|m, i| puts "#{i + 1}. #{m.strMeal}"}
+            World_Cuisine::Meal.all.each.with_index {|m, i| puts "#{i + 1}. #{m.strMeal}"}
             meal_info
         else 
             puts "Sorry, but that is not a valid option. Please type in a different area number..."
@@ -87,16 +87,16 @@ class World_Cusine::CLI
         input = gets.chomp 
         if input == "exit"
         goodbye
-        elsif (1..World_Cusine::Meal.all.size).include?(input.to_i)
+        elsif (1..World_Cuisine::Meal.all.size).include?(input.to_i)
 
         puts ""
         puts "Here is the meal you selected:"
         puts "=============================================================="
     
-        selected_meal = World_Cusine::Meal.all[input.to_i - 1]
+        selected_meal = World_Cuisine::Meal.all[input.to_i - 1]
         selected_meal_id_str = selected_meal.idMeal
         selected_meal_id_int = selected_meal_id_str.to_i
-        selected_meal_hash = World_Cusine::API.get_meal_info(selected_meal_id_int)
+        selected_meal_hash = World_Cuisine::API.get_meal_info(selected_meal_id_int)
         selected_meal_info = selected_meal_hash["meals"]
 
         puts "Meal Name: #{selected_meal_info[0]["strMeal"]}"
