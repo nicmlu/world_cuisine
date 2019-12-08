@@ -4,7 +4,7 @@ class World_Cusine::CLI
     greeting
     area_meals 
     meal_info
-    recipe_box
+    # recipe_box
     another_search
     goodbye
     end 
@@ -19,8 +19,8 @@ class World_Cusine::CLI
         puts " | |  | |             | |    | | /  __ \            (_)               "             
         puts " | |  | |  ___   _ __ | |  __| | | /  \/ _   _  ___  _  _ __    ___   " 
         puts " | |/\| | / _ \ | '__|| | / _` | | |    | | | |/ __|| || '_ \  / _ \  "
-        puts " \  /\  /| (_) || |   | || (_| | | \__/\| |_| |\__ \| || | | ||  __/  "
-        puts "  \/  \/  \___/ |_|   |_| \__,_|  \____/ \__,_||___/|_||_| |_| \___|  "
+        puts "  \  /\  /| (_) || |   | || (_| | | \__/\| |_| |\__ \| || | | ||  __/  "
+        puts "   \/  \/  \___/ |_|   |_| \__,_|  \____/ \__,_||___/|_||_| |_| \___|  "
         puts " ==================================================================== "
         puts " ==================================================================== "
         puts " ==================================================================== "
@@ -36,11 +36,9 @@ class World_Cusine::CLI
         puts ""
         puts "Hi #{name}! World Cusine makes it easy for you to find tasty recipes from all over the world!"
         puts ""
-        sleep 4
+        sleep 3
         puts "Here is the list of cusine areas you can explore:"
-        sleep 4
-        puts ""
-        list_areas
+        sleep 2
     end
 
     def list_areas 
@@ -49,6 +47,8 @@ class World_Cusine::CLI
     end    
     
     def area_meals
+        puts ""
+        list_areas
         puts ""
         puts "========================================================================================================="
         puts "To see a list of meals from an area, type in the number of that area or type in exit to end the search..."
@@ -78,7 +78,7 @@ class World_Cusine::CLI
     def meal_info 
         
         puts ""
-        puts ""
+        puts "=============================================================="
         puts "To see more information about a meal, type in the number of that meal or type in exit to end the search..."
         puts ""
         
@@ -140,42 +140,44 @@ class World_Cusine::CLI
         end
     end 
 
-    def recipe_box
-        puts ""
-        puts "=============================================================="
-        puts "Would you like to save this meal to your recipe box?"
-        puts ""
-        puts "Enter 'yes' to save..."
-        puts ""
-        puts "Enter 'no' to start another search..."
-        puts ""
-        puts "Enter 'exit' to end the search..."
-        puts ""
-        input = gets.chomp.downcase 
-        if input == "exit"
-            goodbye
-        end
-        puts ""
-        case input
-            when "yes"
-            World_Cusine::Meal.recipe_box
-            puts "Your recipe has been saved!"
-            exit
+    # def recipe_box
+    #     puts ""
+    #     puts "=============================================================="
+    #     puts "Would you like to save this meal to your recipe box?"
+    #     puts ""
+    #     puts "Enter 'yes' to save..."
+    #     puts ""
+    #     puts "Enter 'no' to start another search..."
+    #     puts ""
+    #     puts "Enter 'exit' to end the search..."
+    #     puts ""
+    #     input = gets.chomp.downcase 
+    #     if input == "exit"
+    #         goodbye
+    #     end
+    #     puts ""
+    #     case input
+    #         when "yes"
+    #         World_Cusine::Meal.recipe_box
+    #         puts "Your recipe has been saved!"
+    #         exit
             
-            when "no"
-            exit
+    #         when "no"
+    #         exit
             
-            else
-            puts "I don't understand that answer."
-            recipe_box
-        end
+    #         else
+    #         puts "I don't understand that answer."
+    #         recipe_box
+    #     end
 
-    end 
+    # end 
 
     def another_search
         puts ""
         puts ""
         puts "=============================================================="
+        puts "Would you like to search for another meal?"
+        puts ""
         puts "Enter 'yes' to search for another meal..."
         puts ""
         puts "Enter 'area' to search for another area..."
@@ -192,6 +194,7 @@ class World_Cusine::CLI
             area_meals
             when "area"
             list_areas
+            area_meals
         else
             puts "I don't understand that answer."
             another_search
@@ -200,6 +203,10 @@ class World_Cusine::CLI
         
 
     def goodbye
+        puts ""
+        puts ""
+        puts "============================================================================================"
+        puts ""
         puts "Hope you we're able to explore some delicous destinations! Thank you for using World Cusine!"
         exit
     end 
