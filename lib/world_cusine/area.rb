@@ -13,18 +13,6 @@ class World_Cusine::Area
         @@all
     end
 
-#     def self.new_by_name(strArea)
-#     area = self.new(strArea)
-#     meal_obj = Meal.all.select {|meal| meal.strMeal == meal}
-#     if meal_obj = [] 
-#       meal_obj = Meal.new(meal)
-#     else
-#       meal_obj = meal_obj.pop
-#     end
-#       area.meal = meal_obj
-#       area
-#     end 
-
 #     def self.find(strArea)
 #     searched_area = self.all.select {|area| area.strArea == strArea}
 #     if searched_area != []

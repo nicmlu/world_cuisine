@@ -4,7 +4,7 @@ class World_Cusine::CLI
     greeting
     area_meals 
     meal_info
-    # recipe_box
+    recipe_box
     another_search
     goodbye
     end 
@@ -104,6 +104,8 @@ class World_Cusine::CLI
         puts "Meal Name: #{selected_meal_info[0]["strMeal"]}"
         puts "Meal Category: #{selected_meal_info[0]["strCategory"]}"
         puts "Meal Area: #{selected_meal_info[0]["strArea"]}"
+        puts ""
+        puts ""
 
         puts "=============================================================="
         puts "Meal Ingredients: "
@@ -127,7 +129,8 @@ class World_Cusine::CLI
         puts "#{selected_meal_info[0]["strIngredient18"]}: #{selected_meal_info[0]["strMeasure18"]}" unless selected_meal_info[0]["strIngredient18"] == "null" || selected_meal_info[0]["strIngredient18"] == ""
         puts "#{selected_meal_info[0]["strIngredient19"]}: #{selected_meal_info[0]["strMeasure19"]}" unless selected_meal_info[0]["strIngredient19"] == "null" || selected_meal_info[0]["strIngredient19"] == ""
         puts "#{selected_meal_info[0]["strIngredient20"]}: #{selected_meal_info[0]["strMeasure20"]}" unless selected_meal_info[0]["strIngredient20"] == "null" || selected_meal_info[0]["strIngredient20"] == ""
-
+        puts ""
+        puts ""    
         puts "=============================================================="
         puts "Meal Instructions: #{selected_meal_info[0]["strInstructions"]}"
 
@@ -137,31 +140,48 @@ class World_Cusine::CLI
         end
     end 
 
-    # def recipe_box(meal)
-    #     puts "Would you like to save this meal to your recipe box?"
-    #     puts "Enter 'yes' or 'no'..."
-    #     puts "You can enter 'exit' to end the search..."
-    #     input = gets.chomp.downcase 
-    #     if input == "exit"
-    #         goodbye
-    #     end
-    #     puts ""
-    #     case input
-    #         when "yes"
+    def recipe_box
+        puts ""
+        puts "=============================================================="
+        puts "Would you like to save this meal to your recipe box?"
+        puts ""
+        puts "Enter 'yes' to save..."
+        puts ""
+        puts "Enter 'no' to start another search..."
+        puts ""
+        puts "Enter 'exit' to end the search..."
+        puts ""
+        input = gets.chomp.downcase 
+        if input == "exit"
+            goodbye
+        end
+        puts ""
+        case input
+            when "yes"
+            World_Cusine::Meal.recipe_box
+            puts "Your recipe has been saved!"
+            exit
             
-    #         when "no"
-    #         another_search
-    #     else
-    #         puts "I don't understand that answer."
-    #         another_search
-    #     end
+            when "no"
+            exit
+            
+            else
+            puts "I don't understand that answer."
+            recipe_box
+        end
 
-    # end 
+    end 
 
     def another_search
+        puts ""
+        puts ""
+        puts "=============================================================="
         puts "Enter 'yes' to search for another meal..."
+        puts ""
         puts "Enter 'area' to search for another area..."
+        puts ""
         puts "Enter 'exit' to end the search..."
+        puts ""
            input = gets.chomp.downcase 
         if input == "exit"
             goodbye

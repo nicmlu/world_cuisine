@@ -9,9 +9,10 @@ class World_Cusine::Meal
         @@all.push(self)
     end
 
-    def recipe_box
-        @@recipe_box.push(self)
-    end 
+    # def recipe_box
+    #     update(args)
+    #     @@recipe_box.push(self)
+    # end 
 
     def self.all
         @@all
@@ -20,61 +21,5 @@ class World_Cusine::Meal
     def update(args)
         args.each {|k,v|self.send(("#{k}="), v) if self.respond_to?(k)}
     end
-
-#     def self.new_by_name(strMeal)
-#     meal = self.new(strMeal)
-#     area_obj = Area.all.select {|area| area.strArea == area}
-#     if area_obj = [] 
-#       area_obj = Area.new(area)
-#     else
-#       area_obj = area_obj.pop
-#     end
-#       meal.area = area_obj
-#       meal
-#     end 
-
-    # def meal_ingredients
-    #     unless strIngredient1 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient1}: #{strMeasure1}"
-    #     unless strIngredient2 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient2}: #{strMeasure2}"
-    #     unless strIngredient3 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient3}: #{strMeasure3}"
-    #     unless strIngredient4 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient4}: #{strMeasure4}"
-    #     unless strIngredient5 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient5}: #{strMeasure5}"
-    #     unless strIngredient6 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient6}: #{strMeasure6}"
-    #     unless strIngredient7 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient7}: #{strMeasure7}"
-    #     unless strIngredient8 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient8}: #{strMeasure8}"
-    #     unless strIngredient9 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient9}: #{strMeasure9}"
-    #     unless strIngredient10 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient10}: #{strMeasure10}"
-    #     unless strIngredient11 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient11}: #{strMeasure11}"
-    #     unless strIngredient12 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient12}: #{strMeasure12}"
-    #     unless strIngredient13 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient13}: #{strMeasure13}"
-    #     unless strIngredient14 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient14}: #{strMeasure14}"
-    #     unless strIngredient15 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient15}: #{strMeasure15}"
-    #     unless strIngredient16 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient16}: #{strMeasure16}"
-    #     unless strIngredient17 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient17}: #{strMeasure17}"
-    #     unless strIngredient18 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient18}: #{strMeasure18}"
-    #     unless strIngredient19 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient19}: #{strMeasure19}"
-    #     unless strIngredient20 == nil || strIngredient1 == ""
-    #         puts "#{strIngredient20}: #{strMeasure20}"
-    #     end 
-    # end
 
 end
