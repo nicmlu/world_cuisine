@@ -33,7 +33,8 @@ class World_Cuisine::CLI
         puts "===================================================================== "
         puts "Here is the list of cuisine areas you can explore:"
         sleep 1
-        World_Cuisine::API.all_areas
+        @areas = World_Cuisine::API.new
+        @areas.all_areas
         World_Cuisine::Area.all.each.with_index {|a, i| puts "#{i + 1}. #{a.strArea}"}
         puts ""
         puts ""
@@ -51,7 +52,8 @@ class World_Cuisine::CLI
         elsif (1..World_Cuisine::Area.all.size).include?(input.to_i)
             
             area = World_Cuisine::Area.all[input.to_i - 1]
-            World_Cuisine::API.get_area_meals(area)
+            # World_Cuisine::API.new.get_area_meals(area)
+            @areas.get_area_meals(area)
             puts ""
             puts "What a great area to explore! Let's see what meals you can cook up..."
             puts ""
@@ -91,7 +93,8 @@ class World_Cuisine::CLI
         selected_meal = World_Cuisine::Meal.all[input.to_i - 1]
         selected_meal_id_str = selected_meal.idMeal
         selected_meal_id_int = selected_meal_id_str.to_i
-        selected_meal_hash = World_Cuisine::API.get_meal_info(selected_meal_id_int)
+        # selected_meal_hash = World_Cuisine::API.new.get_meal_info(selected_meal_id_int)
+        selected_meal_hash = @areas.get_meal_info(selected_meal_id_int)
         selected_meal_info = selected_meal_hash["meals"]
 
         puts "Meal Name: #{selected_meal_info[0]["strMeal"]}"
